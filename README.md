@@ -3,4 +3,4 @@
  
 # ScreenShots
 
-<img src="https://github.com/MikaelDDavidd/valorant_heros/blob/main/imagens/screenshot_homepage.png" height="400">
+<img src="https://github.com/MikaelDDavidd/valorant_heros/blob/main/images/screenshot_homepage.png" height="400">
