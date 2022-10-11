@@ -1,2 +1,6 @@
 # valorant_heros
- Projeto de App com card view e resumo dos personagens do go valorant
+ Projeto de App com card view e resumo dos personagens do valorant
+ 
+# ScreenShots
+
+<img src="https://github.com/MikaelDDavidd/valorant_heros/blob/main/images/screenshot_homepage.png" height="400">
