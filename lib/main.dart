@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:valorant_heros/screens/detail_screen.dart';
+import 'package:valorant_heros/services/hero_services.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 import 'models/hero_model.dart';
 
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const DetailScreen(),
     );
   }
 }
@@ -30,63 +32,50 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<HeroModel> heros = [
-    HeroModel("JETT", "images/jett_valo.gif"),
-    HeroModel("KILLJOY", "images/killjoy_valo.gif"),
-    HeroModel("SAGE", "images/sage_valo.gif"),
-    HeroModel("SOVA", "images/sova_valo.gif"),
-    HeroModel("VIPER", "images/viper_valo.gif"),
-    HeroModel("RAZE", "images/raze_valo.gif"),
-    HeroModel("YORU", "images/yoru_valo.gif"),
-    HeroModel("BREACH", "images/breach_valo.gif"),
-    HeroModel("ASTRA", "images/astra_valo.gif"),
-    HeroModel("CYPHER", "images/cypher_valo.gif"),
-    HeroModel("OMEN", "images/omen_valo.gif"),
-    HeroModel("PHOENIX", "images/phoenix_valo.gif"),
-    HeroModel("SKYE", "images/skye_valo.gif"),
-  ];
+  final List<HeroModel> heros = HeroService().heros;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black54,
         body: SafeArea(
             child: Column(
-      children: [
-        SizedBox(
-          width: double.infinity,
-          height: 70,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Center(
-              child: Image.asset(
-                "images/logo.png",
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-            child: VerticalCardPager(
-          titles: [for (var hero in heros) hero.title],
-          images: [
-            for (var hero in heros)
-              Hero(
-                tag: hero.title,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: 70,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Center(
                   child: Image.asset(
-                    hero.image,
+                    "images/logo.png",
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
+            ),
+            Expanded(
+                child: VerticalCardPager(
+              titles: [for (var hero in heros) hero.name],
+              images: [
+                for (var hero in heros)
+                  Hero(
+                    tag: hero.name,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Image.asset(
+                        hero.image,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+              ],
+              textStyle: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold),
+              initialPage: 2,
+              align: ALIGN.CENTER,
+            ))
           ],
-          textStyle:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          initialPage: 2,
-          align: ALIGN.CENTER,
-        ))
-      ],
-    )));
+        )));
   }
 }

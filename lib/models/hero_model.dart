@@ -1,8 +1,12 @@
-import 'package:flutter/cupertino.dart';
-
 class HeroModel {
-  late String title;
+  int id;
+  late String name;
   late String image;
+  late String banner;
 
-  HeroModel(this.title, this.image);
+  HeroModel(
+    this.id,
+    this.name,
+    this.image,
+  );
 }
